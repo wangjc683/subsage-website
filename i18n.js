@@ -10,7 +10,7 @@ export const translations = {
     langSwitch: '中',
 
     // Hero
-    heroBadge: 'Open Source \u00b7 Self-Hosted',
+    heroBadge: 'Open Source \u00b7 Self-Hosted \u00b7 Free Forever',
     heroTitle: 'Your AI Agent\'s',
     heroTitleHighlight: 'Subscription Memory',
     heroSubtitle: 'One command to install. One sentence to manage. Self-hosted, open source.',
@@ -126,7 +126,7 @@ export const translations = {
     langSwitch: 'EN',
 
     // Hero
-    heroBadge: '开源 · 自托管',
+    heroBadge: '开源 · 自托管 · 永久免费',
     heroTitle: '你的 AI Agent 的',
     heroTitleHighlight: '订阅管家',
     heroSubtitle: '一行命令安装，一句话管理。自托管，开源。',
