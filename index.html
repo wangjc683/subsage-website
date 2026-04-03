@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SubSage — Your AI Agent's Subscription Memory</title>
+  <meta name="description" content="Self-hosted subscription tracker. One command to install, one sentence to manage. Works with any AI Agent. Open source." />
+  <meta property="og:title" content="SubSage — Your AI Agent's Subscription Memory" />
+  <meta property="og:description" content="Track every subscription with your AI Agent. Self-hosted, open source." />
+  <meta property="og:url" content="https://subsage.top" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://subsage.top/assets/screenshots/overview.png" />
+  <link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SubSage",
+    "description": "Self-hosted subscription tracker for AI Agents. One command to install, one sentence to manage.",
+    "url": "https://subsage.top",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Linux, macOS, Windows",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+</head>
+<body>
+
+  <svg style="position:absolute;width:0;height:0">
+    <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </svg>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="SubSage Home">
+        <svg class="nav-logo-svg" viewBox="0 0 32 32" fill="none"><path class="logo-path-top" d="M5 0h22c2.8 0 5 2.2 5 5v3c0 2.8-2.2 5-5 5h-9c-2.2 0-4 1.8-4 4H5c-2.8 0-5-2.2-5-5V5c0-2.8 2.2-5 5-5z" stroke="#3D7C5F" stroke-width="1.5" fill="none"/><path class="logo-path-bottom" d="M27 32H5c-2.8 0-5-2.2-5-5v-3c0-2.8 2.2-5 5-5h9c2.2 0 4-1.8 4-4h9c2.8 0 5 2.2 5 5v7c0 2.8-2.2 5-5 5z" stroke="#3D7C5F" stroke-width="1.5" fill="none"/></svg>
+        <span class="nav-logo-text">SubSage</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#features" class="nav-link" data-i18n="navFeatures">Features</a>
+        <a href="#screenshots" class="nav-link" data-i18n="navScreenshots">Preview</a>
+        <a href="#quickstart" class="nav-link nav-link-install" data-i18n="navInstall">Install</a>
+        <a href="https://github.com/wangjc683/subsage" target="_blank" rel="noopener" class="nav-star-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 19.771l-7.416 3.642 1.48-8.279L0 9.306l8.332-1.151z"/></svg>
+          <span>Star on GitHub</span>
+        </a>
+        <button class="lang-switch" id="langSwitch" aria-label="Switch language" data-i18n="langSwitch">中</button>
+      </div>
+      <div class="nav-actions">
+        <button class="lang-switch lang-switch-mobile" id="langSwitchMobile" aria-label="Switch language" data-i18n="langSwitch">中</button>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- HERO — "Your AI Agent's Subscription Memory" + animated chat card -->
+  <section class="hero" id="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n-badge>
+        <span class="hero-badge-dot"></span>
+        <span data-i18n="heroBadge">Open Source · Self-Hosted</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-line" data-i18n="heroTitle">Your AI Agent's</span>
+        <span class="hero-title-highlight" data-i18n="heroTitleHighlight">Subscription Memory</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="heroSubtitle">One command to install. One sentence to manage. Self-hosted, open source.</p>
+      <div class="hero-ctas">
+        <a href="#quickstart" class="magnetic-btn btn-primary" data-i18n="heroCta">Get Started</a>
+        <a href="#interfacesSection" class="magnetic-btn btn-ghost" data-i18n="heroCtaDemo">See Demo ↓</a>
+      </div>
+    </div>
+
+    <!-- Hero demo: single Chat card with typewriter animation -->
+    <div class="hero-demo-card" id="heroDemoCard">
+      <div class="demo-card-header">
+        <span class="demo-card-dot red"></span>
+        <span class="demo-card-dot yellow"></span>
+        <span class="demo-card-dot green"></span>
+        <span class="demo-card-label">💬 Chat</span>
+      </div>
+      <div class="demo-card-body">
+        <div class="chat-msg user" id="heroUserMsg"></div>
+        <div class="chat-msg ai" id="heroAiMsg"></div>
+      </div>
+      <div class="chat-pagination" id="chatPagination">
+        <span class="chat-dot active"></span>
+        <span class="chat-dot"></span>
+        <span class="chat-dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -- 3 Steps -->
+  <section class="how-it-works" id="howItWorks">
+    <div class="how-it-works-inner">
+      <h2 class="how-it-works-title">
+        <span data-i18n="hiwTitle">How it works</span>
+      </h2>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <span class="step-icon">🚀</span>
+          <h3 class="step-title" data-i18n="hiwStep1Title">Install</h3>
+          <p class="step-desc" data-i18n="hiwStep1Desc">Copy one sentence to your AI Agent. Deployed in 30 seconds.</p>
+          <a href="#quickstart" class="step-link" data-i18n="hiwStep1Link">Try it →</a>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <span class="step-icon">🔗</span>
+          <h3 class="step-title" data-i18n="hiwStep2Title">Connect</h3>
+          <p class="step-desc" data-i18n="hiwStep2Desc">Copy the Skill from the SubSage setup page. Your Agent instantly learns to manage subscriptions.</p>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <span class="step-icon">💬</span>
+          <h3 class="step-title" data-i18n="hiwStep3Title">Go</h3>
+          <p class="step-desc" data-i18n="hiwStep3Desc">Ask your Agent to manage, open the Dashboard to see it all.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERFACES — "Talk to your Agent" with 3 cards -->
+  <section class="interfaces-section" id="interfacesSection">
+    <div class="interfaces-inner">
+      <h2 class="interfaces-title">
+        <span data-i18n="interfacesTitle">Talk to your Agent,</span>
+        <span class="interfaces-accent" data-i18n="interfacesAccent">SubSage does the rest</span>
+      </h2>
+
+      <div class="interfaces-grid">
+
+        <!-- Terminal Card -->
+        <div class="interface-card terminal-card" id="termCard">
+          <div class="demo-card-header terminal-header">
+            <span class="demo-card-dot red"></span>
+            <span class="demo-card-dot yellow"></span>
+            <span class="demo-card-dot green"></span>
+            <span class="demo-card-label">>_ Terminal</span>
+          </div>
+          <div class="demo-card-body terminal-body">
+            <div class="terminal-line cmd" data-i18n="termCmd">> How much am I spending on AI tools?</div>
+            <div class="terminal-line output" data-i18n="termOutput">5 AI subs totaling $89/mo
+  ChatGPT Plus   $20/mo
+  Claude Pro     $20/mo
+  Cursor Pro     $20/mo
+  Midjourney     $10/mo
+  GitHub Copilot $19/mo</div>
+          </div>
+        </div>
+
+        <!-- IDE Card (Cursor-like dark panel) -->
+        <div class="interface-card ide-card" id="ideCard">
+          <div class="ide-header">
+            <span class="ide-tab active">🤖 Agent</span>
+            <span class="ide-tab">Chat</span>
+            <span class="ide-tab">Composer</span>
+          </div>
+          <div class="ide-body">
+            <div class="ide-msg user" data-i18n="ideUser">Cancel Netflix and pause Midjourney</div>
+            <div class="ide-msg agent" data-i18n="ideAgent">Done. Netflix → cancelled, Midjourney → paused. This saves you $28.98/month.</div>
+          </div>
+        </div>
+
+        <!-- Vision Card (chat-style: send screenshot → AI parses) -->
+        <div class="interface-card vision-card" id="visionCard">
+          <div class="demo-card-header">
+            <span class="demo-card-dot red"></span>
+            <span class="demo-card-dot yellow"></span>
+            <span class="demo-card-dot green"></span>
+            <span class="demo-card-label">💬 Chat</span>
+          </div>
+          <div class="vision-chat-body">
+            <div class="vision-user-msg">
+              <div class="vision-thumb">
+                <div class="vision-thumb-icon">🧾</div>
+                <div class="vision-thumb-meta">
+                  <span class="vision-thumb-name">Netflix_billing.pdf</span>
+                  <span class="vision-thumb-size">245 KB</span>
+                </div>
+              </div>
+              <p class="vision-user-text" data-i18n="visionUserText">Help me log this bill</p>
+            </div>
+            <div class="vision-ai-msg">
+              <div class="vision-parsed-line"><span class="vision-check">✓</span> Netflix · $22.99/mo · Entertainment</div>
+              <div class="vision-parsed-line"><span class="vision-check">✓</span> Visa ····4242 · Monthly billing</div>
+              <div class="vision-parsed-note" data-i18n="visionNote">Detected from billing document</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES (9 Bento Grid) -->
+  <section class="features" id="features">
+    <div class="features-inner">
+      <h2 class="section-title"><span data-i18n="featuresTitle">The foundation is here</span><br/><span class="section-title-muted" data-i18n="featuresSubtitle">The rest is up to your Agent</span></h2>
+      <div class="bento-grid" id="bentoGrid">
+        <div class="bento-card bento-large" data-feat="1"><span class="bento-icon">🤖</span><h3 class="bento-title" data-i18n="feat1Title">AI Agent Native</h3><p class="bento-desc" data-i18n="feat1Desc">Works with OpenClaw, Claude Code, and any AI Agent. One install command, zero config.</p></div>
+        <div class="bento-card" data-feat="2"><span class="bento-icon">💱</span><h3 class="bento-title" data-i18n="feat2Title">Multi-Currency</h3><p class="bento-desc" data-i18n="feat2Desc">Auto exchange rates, unified to your base currency.</p></div>
+        <div class="bento-card" data-feat="3"><span class="bento-icon">📊</span><h3 class="bento-title" data-i18n="feat3Title">Smart Analytics</h3><p class="bento-desc" data-i18n="feat3Desc">Monthly, yearly, and daily breakdown with category insights.</p></div>
+        <div class="bento-card" data-feat="4"><span class="bento-icon">📅</span><h3 class="bento-title" data-i18n="feat4Title">Calendar View</h3><p class="bento-desc" data-i18n="feat4Desc">Visual renewal timeline. Never miss a billing date.</p></div>
+        <div class="bento-card" data-feat="5"><span class="bento-icon">🔒</span><h3 class="bento-title" data-i18n="feat5Title">Self-Hosted</h3><p class="bento-desc" data-i18n="feat5Desc">Your data stays on your machine. No cloud, no tracking.</p></div>
+        <div class="bento-card" data-feat="6"><span class="bento-icon">📤</span><h3 class="bento-title" data-i18n="feat6Title">Import & Export</h3><p class="bento-desc" data-i18n="feat6Desc">Excel and JSON backup. Your data, your format.</p></div>
+        <div class="bento-card" data-feat="7"><span class="bento-icon">🌙</span><h3 class="bento-title" data-i18n="feat7Title">Themes</h3><p class="bento-desc" data-i18n="feat7Desc">Dark, light, and system mode. Easy on the eyes, any time.</p></div>
+        <div class="bento-card" data-feat="8"><span class="bento-icon">📱</span><h3 class="bento-title" data-i18n="feat8Title">PWA Ready</h3><p class="bento-desc" data-i18n="feat8Desc">Install to your phone's home screen. No app store needed.</p></div>
+        <div class="bento-card bento-large bento-special" data-feat="9"><span class="bento-icon">✨</span><h3 class="bento-title" data-i18n="feat9Title">Infinite Possibilities</h3><p class="bento-desc" data-i18n="feat9Desc">Your Agent, your rules. Custom reminders, smart alerts, spending reports — if you can describe it, your Agent can do it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="screenshots" id="screenshots">
+    <div class="screenshots-inner">
+      <h2 class="section-title"><span data-i18n="screenshotsTitle">Built for Agents.</span> <span class="section-title-muted" data-i18n="screenshotsSubtitle">Humans welcome</span></h2>
+      <div class="ss-controls">
+        <div class="ss-tabs"><button class="ss-tab-btn active" data-ss="overview" data-i18n="ssTabOverview">Overview</button><button class="ss-tab-btn" data-ss="subscriptions" data-i18n="ssTabSubs">Subscriptions</button><button class="ss-tab-btn ss-desktop-only" data-ss="calendar" data-i18n="ssTabCalendar">Calendar</button><button class="ss-tab-btn ss-desktop-only" data-ss="agent" data-i18n="ssTabAgent">Agent Setup</button><button class="ss-tab-btn ss-desktop-only" data-ss="edit-modal" data-i18n="ssTabEditModal">Edit Modal</button></div>
+        <div class="ss-theme-toggle"><button class="ss-theme-btn active" data-theme="light" data-i18n="ssLight">Light</button><button class="ss-theme-btn" data-theme="dark" data-i18n="ssDark">Dark</button></div>
+      </div>
+      <div class="ss-display">
+        <div class="ss-browser-frame" id="ssBrowserFrame">
+          <div class="ss-window-bar"><span class="demo-card-dot red"></span><span class="demo-card-dot yellow"></span><span class="demo-card-dot green"></span><span class="ss-window-title">SubSage</span></div>
+          <div class="ss-image-container"><img id="ssImage" src="/assets/screenshots/overview.png" alt="SubSage Desktop Screenshot" class="ss-clickable" loading="lazy" /></div>
+        </div>
+        <div class="ss-phone-frame" id="ssPhoneFrame">
+          <div class="ss-phone-screen"><img id="ssImageMobile" src="/assets/screenshots/overview-mobile.png" alt="SubSage Mobile Screenshot" class="ss-clickable" loading="lazy" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="ss-lightbox" id="ssLightbox">
+    <button class="ss-lightbox-close" id="ssLightboxClose" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="ss-lightbox-arrow ss-lightbox-prev" id="ssLightboxPrev" aria-label="Previous">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <img id="ssLightboxImg" src="" alt="SubSage Screenshot Enlarged" />
+    <button class="ss-lightbox-arrow ss-lightbox-next" id="ssLightboxNext" aria-label="Next">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <!-- QUICK START -->
+  <section class="quickstart" id="quickstart">
+    <div class="quickstart-inner">
+      <h2 class="section-title" data-i18n="qsTitle">Ready in 30 seconds</h2>
+      <div class="qs-agent">
+        <div class="qs-agent-header">
+          <h3 class="qs-agent-title" data-i18n="qsAgentTitle">Let your AI Agent do the work</h3>
+          <span class="qs-agent-compat" data-i18n="agentHint">Works with OpenClaw, or any other AI Agents</span>
+        </div>
+        <p class="qs-agent-desc" data-i18n="qsAgentDesc">Copy this to your AI Agent — it handles the rest.</p>
+        <div class="qs-tabs" role="tablist"><button class="tab-btn active" data-qs-agent="script" data-i18n="qsAgentTabScript">🤖 Quick Install</button><button class="tab-btn" data-qs-agent="docker" data-i18n="qsAgentTabDocker">🐳 Docker Install</button></div>
+        <div class="qs-panels">
+          <div class="qs-panel active" data-qs-agent-panel="script"><div class="install-cmd-wrap qs-cmd-wrap"><code class="install-cmd" data-i18n="installAgentCmd">"Install SubSage by running curl -fsSL https://raw.githubusercontent.com/wangjc683/subsage/main/install.sh | bash — after it starts, open http://localhost:8321 in my browser."</code><button class="copy-btn" data-copy="qs-agent-script" aria-label="Copy"><svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></button></div><p class="docker-hint">💡 <span data-i18n="scriptHint">Available on Linux & macOS</span></p></div>
+          <div class="qs-panel" data-qs-agent-panel="docker"><div class="install-cmd-wrap qs-cmd-wrap"><code class="install-cmd" data-i18n="installAgentDockerCmd">"Install SubSage with Docker by running docker run -d --name subsage -p 8321:8321 -v subsage-data:/data wangjc683/subsage — after it starts, open http://localhost:8321 in my browser."</code><button class="copy-btn" data-copy="qs-agent-docker" aria-label="Copy"><svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></button></div><p class="docker-hint">💡 <span data-i18n="dockerHint">Available on Linux, macOS & Windows — Requires Docker, get it at</span> <a href="https://docker.com/get-started" target="_blank" rel="noopener">docker.com</a></p></div>
+        </div>
+      </div>
+      <div class="qs-manual">
+        <h3 class="qs-manual-title" data-i18n="qsManualTitle">Or install yourself</h3>
+        <div class="qs-tabs" role="tablist"><button class="tab-btn active" data-qs="script" data-i18n="qsTabScript">⚡ One-Line Install</button><button class="tab-btn" data-qs="docker" data-i18n="qsTabDockerRun">🐳 Docker Run</button><button class="tab-btn" data-qs="compose" data-i18n="qsTabCompose">🐳 Docker Compose</button></div>
+        <div class="qs-panels">
+          <div class="qs-panel active" data-qs-panel="script"><div class="install-cmd-wrap"><code class="install-cmd mono" data-i18n="qsScriptCmd">curl -fsSL https://raw.githubusercontent.com/wangjc683/subsage/main/install.sh | bash</code><button class="copy-btn" data-copy="qs-script" aria-label="Copy"><svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></button></div></div>
+          <div class="qs-panel" data-qs-panel="docker"><div class="install-cmd-wrap"><code class="install-cmd mono" data-i18n="qsDockerCmd">docker run -d --name subsage -p 8321:8321 -v subsage-data:/data wangjc683/subsage</code><button class="copy-btn" data-copy="qs-docker" aria-label="Copy"><svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></button></div><p class="docker-hint">💡 <span data-i18n="dockerHint">Requires Docker — get it at</span> <a href="https://docker.com/get-started" target="_blank" rel="noopener">docker.com</a></p></div>
+          <div class="qs-panel" data-qs-panel="compose"><div class="install-cmd-wrap"><code class="install-cmd mono" data-i18n="qsComposeCmd">curl -O https://raw.githubusercontent.com/wangjc683/subsage/main/docker-compose.yml
+docker compose up -d</code><button class="copy-btn" data-copy="qs-compose" aria-label="Copy"><svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></button></div><p class="docker-hint">💡 <span data-i18n="dockerHint">Requires Docker — get it at</span> <a href="https://docker.com/get-started" target="_blank" rel="noopener">docker.com</a></p></div>
+        </div>
+        <div class="qs-platforms"><p data-i18n="qsPlatformSystems">Linux · macOS · Windows (Docker) · x86 · ARM · Apple Silicon</p><p data-i18n="qsPlatformDevices">From your laptop to a Raspberry Pi or home NAS — it just works.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER WAVE SEPARATOR -->
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path class="wave-fill" d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z"></path>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-star-cta"><a href="https://github.com/wangjc683/subsage" target="_blank" rel="noopener" class="magnetic-btn btn-star"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 19.771l-7.416 3.642 1.48-8.279L0 9.306l8.332-1.151z"/></svg><span data-i18n="footerStar">Star SubSage on GitHub</span></a></div>
+      <div class="footer-columns">
+        <div class="footer-col footer-brand"><div class="footer-logo"><svg width="24" height="24" viewBox="0 0 32 32"><path d="M5 0h22c2.8 0 5 2.2 5 5v3c0 2.8-2.2 5-5 5h-9c-2.2 0-4 1.8-4 4H5c-2.8 0-5-2.2-5-5V5c0-2.8 2.2-5 5-5z" fill="#3D7C5F"/><path d="M27 32H5c-2.8 0-5-2.2-5-5v-3c0-2.8 2.2-5 5-5h9c2.2 0 4-1.8 4-4h9c2.8 0 5 2.2 5 5v7c0 2.8-2.2 5-5 5z" fill="#3D7C5F"/></svg><span>SubSage</span></div><p class="footer-brand-desc" data-i18n="footerBrandDesc">Open-source subscription tracker for the AI Agent era.</p></div>
+        <div class="footer-col"><h4 class="footer-col-title" data-i18n="footerLinks">Links</h4><a href="#quickstart" data-i18n="navInstall">Install</a><a href="https://github.com/wangjc683/subsage#readme" target="_blank" rel="noopener" data-i18n="footerDocs">Documentation</a><a href="https://github.com/wangjc683/subsage/releases" target="_blank" rel="noopener">Changelog</a></div>
+        <div class="footer-col"><h4 class="footer-col-title" data-i18n="footerCommunity">Community</h4><a href="https://github.com/wangjc683/subsage" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/wangjc683/subsage/discussions" target="_blank" rel="noopener">Discussions</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 SubSage · MIT License</p>
+        <p>Designed & built by JC Wang</p>
+        <p><a href="https://15perf70mm.com" target="_blank" rel="noopener">15perf70mm.com</a> — <span data-i18n="footer15perf">An interactive guide to cinema's largest film format</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
